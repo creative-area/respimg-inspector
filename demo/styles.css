@@ -1,0 +1,25 @@
+.respimg-overlay {
+	box-sizing: border-box;
+}
+
+.respimg-overlay::before {
+	box-sizing: inherit;
+	display: block;
+	padding: 20px;
+	font-family: monospace;
+	font-size: 9px;
+	color: #fff;
+	content: "width: " attr(data-image-width) "px - height: " attr(data-image-height) "px - natural width: " attr(data-image-natural-width) "px - natural height: " attr(data-image-natural-height) "px";
+}
+
+.respimg-warning {
+	background-color: rgba(252, 176, 49, .5);
+}
+
+.respimg-bad {
+	background-color: rgba(252, 86, 61, .5);
+}
+
+.respimg-good {
+	background-color: rgba(185, 237, 67, .5);
+}

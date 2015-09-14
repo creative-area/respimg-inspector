@@ -1,0 +1,8 @@
+.idea
+.editorconfig
+.jshintrc
+.jscsrc
+.gitattributes
+.gitignore
+.npmignore
+.travis.xml

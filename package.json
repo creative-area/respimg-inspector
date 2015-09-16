@@ -1,5 +1,5 @@
 {
-  "name": "responsive-images-test",
+  "name": "respimg-inspector",
   "version": "0.1.0",
   "description": "A javascript plugin to check responsive images in the browser.",
   "keywords": [
@@ -10,10 +10,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/creative-area/responsive-images-test.git"
+    "url": "https://github.com/creative-area/respimg-inspector.git"
   },
   "bugs": {
-    "url": "https://github.com/creative-area/responsive-images-test/issues"
+    "url": "https://github.com/creative-area/respimg-inspector/issues"
   },
   "author": {
     "name": "Florent Bourgeois",
@@ -36,5 +36,8 @@
   },
   "scripts": {
     "test": "grunt travis --verbose"
+  },
+  "dependencies": {
+    "imagesloaded": "^3.1.8"
   }
 }

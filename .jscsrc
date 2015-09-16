@@ -1,4 +1,3 @@
 {
-	"preset": "jquery",
-	"maximumLineLength": 150
+	"preset": "jquery"
 }

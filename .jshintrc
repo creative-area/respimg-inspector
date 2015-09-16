@@ -1,5 +1,16 @@
 {
 	"strict": true,
 	"browser": true,
-	"expr": true
+	"undef": true,
+  "unused": true,
+	"eqeqeq": true,
+	"devel": true,
+	"module": true,
+	"esnext": true,
+	"predef": [
+    "require",
+    "define",
+    "escape",
+		"module"
+  ]
 }

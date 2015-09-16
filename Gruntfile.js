@@ -25,14 +25,14 @@ module.exports = function( grunt ) {
 				banner: "<%= meta.banner %>"
 			},
 			dist: {
-				src: [ "src/responsive-images-test.js" ],
-				dest: "dist/responsive-images-test.js"
+				src: [ "src/respimg-inspector.js" ],
+				dest: "dist/respimg-inspector.js"
 			}
 		},
 
 		// Lint definitions
 		jshint: {
-			files: [ "src/responsive-images-test.js" ],
+			files: [ "src/respimg-inspector.js" ],
 			options: {
 				jshintrc: ".jshintrc"
 			}
@@ -41,8 +41,8 @@ module.exports = function( grunt ) {
 		// Minify definitions
 		uglify: {
 			my_target: {
-				src: [ "dist/responsive-images-test.js" ],
-				dest: "dist/responsive-images-test.min.js"
+				src: [ "dist/respimg-inspector.js" ],
+				dest: "dist/respimg-inspector.min.js"
 			},
 			options: {
 				banner: "<%= meta.banner %>"

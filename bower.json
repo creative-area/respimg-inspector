@@ -1,17 +1,20 @@
 {
-	"name": "responsive-images-test",
-	"version": "0.1.0",
-	"homepage": "https://github.com/creative-area/responsive-images-test",
-	"authors": [
-		"Florent Bourgeois"
-	],
-	"description": "A javascript plugin to check responsive images in the browser.",
-	"main": "src/responsive-images-test.js",
-	"keywords": [
-		"image",
-		"debug",
-		"plugin",
-		"responsive"
-	],
-	"license": "MIT"
+  "name": "respimg-inspector",
+  "version": "0.1.0",
+  "homepage": "https://github.com/creative-area/respimg-inspector",
+  "authors": [
+    "Florent Bourgeois"
+  ],
+  "description": "A javascript plugin to check responsive images in the browser.",
+  "main": "src/respimg-inspector.js",
+  "keywords": [
+    "image",
+    "debug",
+    "plugin",
+    "responsive"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "imagesloaded": "~3.1.8"
+  }
 }

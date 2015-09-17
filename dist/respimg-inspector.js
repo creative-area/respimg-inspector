@@ -50,14 +50,14 @@
 		var extended = {};
 		var prop;
 		for ( prop in defaults ) {
-				if ( Object.prototype.hasOwnProperty.call( defaults, prop ) ) {
-						extended[ prop ] = defaults[ prop ];
-				}
+			if ( Object.prototype.hasOwnProperty.call( defaults, prop ) ) {
+				extended[ prop ] = defaults[ prop ];
+			}
 		}
 		for ( prop in options ) {
-				if ( Object.prototype.hasOwnProperty.call( options, prop ) ) {
-						extended[ prop ] = options[ prop ];
-				}
+			if ( Object.prototype.hasOwnProperty.call( options, prop ) ) {
+				extended[ prop ] = options[ prop ];
+			}
 		}
 		return extended;
 	};
@@ -70,8 +70,8 @@
 			running = true;
 			observer.disconnect();
 			requestAnimationFrame( function() {
-					obj.dispatchEvent ( new CustomEvent( name ) );
-					running = false;
+				obj.dispatchEvent ( new CustomEvent( name ) );
+				running = false;
 			} );
 		};
 		obj.addEventListener( type, func );
@@ -232,7 +232,7 @@
 			} );
 		}
 		if ( wrapper !== undefined ) {
-				wrapper.remove();
+			wrapper.remove();
 		}
 		items = [];
 		images = [];

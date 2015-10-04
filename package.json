@@ -26,6 +26,9 @@
     }
   ],
   "license": "MIT",
+  "dependencies": {
+    "imagesloaded": "^3.1.8"
+  },
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-cli": "~0.1.13",
@@ -36,8 +39,5 @@
   },
   "scripts": {
     "test": "grunt travis --verbose"
-  },
-  "dependencies": {
-    "imagesloaded": "^3.1.8"
   }
 }

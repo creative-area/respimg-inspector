@@ -3,6 +3,7 @@
 **RespImg Inspector** is a javascript plugin to check responsive images in the browser. This plugin intends to help you implement responsive images' best practices.
 
 [![Build Status](https://travis-ci.org/creative-area/respimg-inspector.svg?branch=master)](https://travis-ci.org/creative-area/respimg-inspector)
+[![npm version](https://badge.fury.io/js/respimg-inspector.svg)](http://badge.fury.io/js/respimg-inspector)
 
 By adding this script to a page, it will add layers over images and check their *responsiveness* status. Those status can be `good`, `warning` or `bad`:
 

@@ -70,7 +70,7 @@
 			running = true;
 			observer.disconnect();
 			requestAnimationFrame( function() {
-				obj.dispatchEvent ( new CustomEvent( name ) );
+				obj.dispatchEvent( new CustomEvent( name ) );
 				running = false;
 			} );
 		};

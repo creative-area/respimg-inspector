@@ -1,5 +1,5 @@
 /*
- *  respimg-inspector - v0.1.0
+ *  respimg-inspector - v0.1.1
  *  A javascript plugin to check responsive images in the browser.
  *  
  *

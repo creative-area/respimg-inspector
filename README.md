@@ -5,6 +5,7 @@
 [![Build Status](https://travis-ci.org/creative-area/respimg-inspector.svg?branch=master)](https://travis-ci.org/creative-area/respimg-inspector)
 [![GitHub version](https://badge.fury.io/gh/creative-area%2Frespimg-inspector.svg)](http://badge.fury.io/gh/creative-area%2Frespimg-inspector)
 [![npm version](https://badge.fury.io/js/respimg-inspector.svg)](http://badge.fury.io/js/respimg-inspector)
+[![Bower version](https://badge.fury.io/bo/respimg-inspector.svg)](http://badge.fury.io/bo/respimg-inspector)
 
 By adding this script to a page, it will add layers over images and check their *responsiveness* status. Those status can be `good`, `warning` or `bad`:
 

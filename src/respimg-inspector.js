@@ -8,12 +8,11 @@
 		!!window.addEventListener &&
 		!!window.MutationObserver;
 
-	var settings, wrapper, items = [], images = [], overlays = [];
+	var settings, items = [], images = [], overlays = [];
 
 	var defaults = {
 		selectors: null,
-		classNamespace: "respimg-inspector-",
-		wrapperId: "respimg-inspector-wrapper"
+		classNamespace: "respimg-inspector-"
 	};
 
 	var elementsToExclude = [
@@ -107,7 +106,6 @@
 					attributes: true
 				} );
 			} );
-			renderWrapper();
 			renderOverlays();
 			observer.observe( docBody, {
 				childList: true
@@ -198,21 +196,9 @@
 		return overlay;
 	};
 
-	var renderWrapper = function() {
-		wrapper = document.createElement( "div" );
-		wrapper.id = settings.wrapperId;
-		wrapper.style.position = "absolute";
-		wrapper.style.top = 0;
-		wrapper.style.bottom = 0;
-		wrapper.style.left = 0;
-		wrapper.style.right = 0;
-		wrapper.style.zIndex = 2147483647;
-		docBody.appendChild( wrapper );
-	};
-
 	var renderOverlays = function() {
 		forEach( overlays, function( overlay ) {
-			wrapper.appendChild( overlay );
+			docBody.appendChild( overlay );
 		} );
 	};
 
@@ -222,9 +208,6 @@
 			forEach( overlays, function( overlay ) {
 				overlay.remove();
 			} );
-		}
-		if ( wrapper !== undefined ) {
-			wrapper.remove();
 		}
 		items = [];
 		images = [];
@@ -236,7 +219,13 @@
 		settings = extend( defaults, options || {} );
 		throttle( "resize", "optimizedResize" );
 		window.addEventListener( "optimizedResize", update );
-		window.addEventListener( "load", update );
+		update();
+	};
+
+	respImgInspector.destroy = function() {
+		if ( !settings ) { return; }
+		cleanUp();
+		window.removeEventListener( "optimizedResize", update );
 	};
 
 	if ( typeof define === "function" && define.amd ) {

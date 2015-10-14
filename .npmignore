@@ -6,4 +6,4 @@
 .gitignore
 .npmignore
 .travis.xml
-chrome-extension/
+dist/chrome/

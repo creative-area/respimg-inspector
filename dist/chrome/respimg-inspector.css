@@ -1,0 +1,20 @@
+.respimg-inspector-overlay::before {
+	display: block;
+	padding: 20px;
+	font-family: monospace;
+	font-size: 9px;
+	color: #fff;
+	content: "tag: " attr(data-el-tag) " - width: " attr(data-img-width) "px - height: " attr(data-img-height) "px - natural width: " attr(data-img-natural-width) "px - natural height: " attr(data-img-natural-height) "px";
+}
+
+.respimg-inspector-warning {
+	background-color: rgba(252, 176, 49, .4);
+}
+
+.respimg-inspector-bad {
+	background-color: rgba(252, 86, 61, .4);
+}
+
+.respimg-inspector-good {
+	background-color: rgba(185, 237, 67, .4);
+}

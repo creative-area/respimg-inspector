@@ -33,12 +33,12 @@ function addTab( tab ) {
 
 function removeTab( id ) {
 	currentTabId = null;
-	chrome.tabs.executeScript( currentTabId, {
-		code: "respImgInspector.destroy();"
-	} );
 	chrome.browserAction.setIcon( {
 		tabId: id,
 		path: "icon32.png"
+	} );
+	chrome.tabs.executeScript( id, {
+		code: "respImgInspector.destroy();"
 	} );
 	chrome.tabs.reload( id );
 }

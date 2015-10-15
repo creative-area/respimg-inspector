@@ -18,7 +18,13 @@
 	var elementsToExclude = [
 		"span", "em", "strong", "i", "b", "big", "small", "tt", "abbr",
 		"script", "br", "hr", "sub", "sup", "button", "input", "label",
-		"select", "textarea", "samp", "var"
+		"select", "textarea", "samp", "var", "iframe", "script", "video",
+		"object", "canvas", "center", "font", "frame", "frameset", "noframe",
+		"noscript", "option", "strike", "s", "wbr", "bdi", "kbd", "audio",
+		"map", "area", "track", "embed", "param", "source", "del", "ins",
+		"acronym", "applet", "blink", "dir", "spacer", "isindex", "content",
+		"element", "shadow", "template", "noembed", "head", "meta", "link",
+		"title", "style", "html"
 	];
 
 	var docBody = document.body;
@@ -84,18 +90,18 @@
 		var respImgElements = document.querySelectorAll( selectors );
 		forEach( respImgElements, function( respImgElement ) {
 			var image = getImage( respImgElement );
-			var item = {
-				el: respImgElement,
-				img: image
-			};
+			if ( image ) {
+				var item = {
+					el: respImgElement,
+					img: image
+				};
 
-			// TODO: Handle more background image usages.
-			// Only handle IMG tag and background "cover" for now.
-			if ( item.el.nodeName === "IMG" ||
-				getCss( item.el, "background-size" ) === "cover"
-			) {
-				items.push( item );
-				images.push( image );
+				// TODO: Handle more background image usages.
+				// Only handle IMG tag and background "cover" for now.
+				if ( item.el.nodeName === "IMG" || getCss( item.el, "background-size" ) === "cover" ) {
+					items.push( item );
+					images.push( image );
+				}
 			}
 		} );
 		window.imagesLoaded( images, function() {
@@ -118,9 +124,9 @@
 			return settings.selectors;
 		} else {
 			var array = elementsToExclude.map( function( element ) {
-				return "*:not(" + element + ")";
+				return "not(" + element + ")";
 			} );
-			return array.join();
+			return "*:" + array.join( ":" );
 		}
 	};
 
@@ -220,14 +226,14 @@
 		if ( !supports ) { return; }
 		settings = extend( defaults, options || {} );
 		throttle( "resize", "optimizedResize" );
-		window.addEventListener( "optimizedResize", update );
+		window.addEventListener( "optimizedResize", update, false );
 		update();
 	};
 
 	respImgInspector.destroy = function() {
 		if ( !settings ) { return; }
 		cleanUp();
-		window.removeEventListener( "optimizedResize", update );
+		window.removeEventListener( "optimizedResize", update, false );
 	};
 
 	if ( typeof define === "function" && define.amd ) {

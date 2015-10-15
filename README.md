@@ -62,9 +62,11 @@ Or
 
 ```html
 <script>
-respImgInspector.init({
-  selectors: ".myclass, img"
-});
+window.addEventListener( "load", function() {
+  respImgInspector.init( {
+    selectors: ".myclass, img"
+  } );
+} );
 </script>
 ```
 
@@ -81,14 +83,14 @@ You can customize how **RespImg Inspector**'s overlays look by adding your own s
 }
 
 .respimg-inspector-warning {
-  background-color: rgba(252, 176, 49, .4);
+  background-color: rgba(252, 176, 49, .7);
 }
 
 .respimg-inspector-bad {
-  background-color: rgba(252, 86, 61, .4);
+  background-color: rgba(252, 86, 61, .7);
 }
 
 .respimg-inspector-good {
-  background-color: rgba(185, 237, 67, .4);
+  background-color: rgba(185, 237, 67, .7);
 }
 ```

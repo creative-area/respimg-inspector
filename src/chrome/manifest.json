@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "RespImg Inspector",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Florent Bourgeois",
   "description": "This extension check responsive images on a website",
   "homepage_url": "https://github.com/creativearea/respimg-inspector",

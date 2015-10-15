@@ -1,5 +1,5 @@
 /*
- *	respimg-inspector - v0.1.1
+ *	respimg-inspector - v0.2.0
  *	A javascript plugin to check responsive images in the browser.
  *	
  *
@@ -30,6 +30,7 @@
 	];
 
 	var docBody = document.body;
+	var docElem = document.documentElement;
 
 	var forEach = function( collection, callback, scope ) {
 		if ( Object.prototype.toString.call( collection ) === "[object Object]" ) {
@@ -134,14 +135,18 @@
 
 	var getElementData = function( element ) {
 		var elRect = element.getBoundingClientRect();
+		var scrollTop = window.pageYOffset || docElem.scrollTop || docBody.scrollTop;
+		var scrollLeft = window.pageXOffset || docElem.scrollLeft || docBody.scrollLeft;
+		var clientTop = docElem.clientTop || docBody.clientTop || 0;
+		var clientLeft = docElem.clientLeft || docBody.clientLeft || 0;
 		return {
 			elTag: element.nodeName.toLowerCase(),
 			elWidth: elRect.width,
 			elHeight: elRect.height,
-			elTop: elRect.top,
-			elBottom: elRect.bottom,
-			elLeft: elRect.left,
-			elRight: elRect.right
+			elTop: Math.round( elRect.top +  scrollTop - clientTop ),
+			elBottom: Math.round( elRect.bottom + scrollTop - clientTop ),
+			elLeft: Math.round( elRect.left + scrollLeft - clientLeft ),
+			elRight: Math.round( elRect.right + scrollLeft - clientLeft )
 		};
 	};
 
@@ -161,8 +166,10 @@
 			image = element;
 		} else if ( getCss( element, "background-image" ) !== "none" ) {
 			var bgUrl = /^url\((['"]?)(.*)\1\)$/.exec( getCss( element, "background-image" ) );
-			image = new Image();
-			image.src = bgUrl[ 2 ];
+			if ( bgUrl ) {
+				image = new Image();
+				image.src = bgUrl[ 2 ];
+			}
 		}
 		return image;
 	};
@@ -185,18 +192,14 @@
 	};
 
 	var getOverlay = function( data ) {
-		var marginTop = getCss( docBody, "margin-top" );
-		var marginLeft = getCss( docBody, "margin-left" );
-		var bodyRect = docBody.getBoundingClientRect();
-		var offsetTop = data.elTop - bodyRect.top;
-		var offsetLeft = data.elLeft - bodyRect.left;
 		var overlay = document.createElement( "div" );
 		overlay.classList.add( settings.classNamespace + "overlay" );
 		overlay.style.position = "absolute";
 		overlay.style.width = data.elWidth + "px";
 		overlay.style.height = data.elHeight + "px";
-		overlay.style.top = "calc(" + offsetTop + "px + " + marginTop + ")";
-		overlay.style.left =	"calc(" + offsetLeft + "px + " + marginLeft + ")";
+		overlay.style.top = data.elTop + "px";
+		overlay.style.left =	data.elLeft + "px";
+		overlay.style.zIndex = 2147483647;
 		overlay.classList.add( getOverlayClassName( data ) );
 		forEach( data, function( dataValue, dataKey ) {
 			overlay.dataset[ dataKey ] = dataValue;

@@ -1,6 +1,6 @@
 {
   "name": "respimg-inspector",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A javascript plugin to check responsive images in the browser.",
   "keywords": [
     "image",

@@ -1,5 +1,5 @@
 /*
- *	respimg-inspector - v0.2.0
+ *	respimg-inspector - v0.2.1
  *	A javascript plugin to check responsive images in the browser.
  *	
  *
@@ -16,7 +16,7 @@
 		!!window.addEventListener &&
 		!!window.MutationObserver;
 
-	var settings, items = [], images = [], overlays = [];
+	var settings, throttling = false, items = [], images = [], overlays = [];
 
 	var defaults = {
 		selectors: null,
@@ -64,14 +64,13 @@
 
 	var throttle = function( type, name, scope ) {
 		var obj = scope || window;
-		var running = false;
 		var func = function() {
-			if ( running ) { return; }
-			running = true;
+			if ( throttling ) { return; }
+			throttling = true;
 			observer.disconnect();
 			requestAnimationFrame( function() {
 				obj.dispatchEvent( new CustomEvent( name ) );
-				running = false;
+				throttling = false;
 			} );
 		};
 		obj.addEventListener( type, func );
@@ -82,7 +81,8 @@
 	};
 
 	var observer = new MutationObserver( function( mutations ) {
-		mutations.forEach( function() {
+		mutations.forEach( function( mutation ) {
+			console.log( mutation.type );
 			update();
 		} );
 	} );
@@ -229,7 +229,9 @@
 		if ( !supports ) { return; }
 		settings = extend( defaults, options || {} );
 		throttle( "resize", "optimizedResize" );
+		//throttle( "scroll", "optimizedScroll" );
 		window.addEventListener( "optimizedResize", update );
+		//window.addEventListener( "optimizedScroll", update );
 		update();
 	};
 
@@ -237,6 +239,7 @@
 		if ( !settings ) { return; }
 		cleanUp();
 		window.removeEventListener( "optimizedResize", update );
+		//window.removeEventListener( "optimizedScroll", update );
 	};
 
 	if ( typeof define === "function" && define.amd ) {

@@ -8,7 +8,7 @@
 		!!window.addEventListener &&
 		!!window.MutationObserver;
 
-	var settings, items = [], images = [], overlays = [];
+	var settings, throttling = false, items = [], images = [], overlays = [];
 
 	var defaults = {
 		selectors: null,
@@ -56,14 +56,13 @@
 
 	var throttle = function( type, name, scope ) {
 		var obj = scope || window;
-		var running = false;
 		var func = function() {
-			if ( running ) { return; }
-			running = true;
+			if ( throttling ) { return; }
+			throttling = true;
 			observer.disconnect();
 			requestAnimationFrame( function() {
 				obj.dispatchEvent( new CustomEvent( name ) );
-				running = false;
+				throttling = false;
 			} );
 		};
 		obj.addEventListener( type, func );

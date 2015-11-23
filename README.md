@@ -13,7 +13,7 @@ By adding this script to a page, it will add layers over images and check their 
 - Status is `warning` when the delivered image is larger than it should be.
 - Status is `bad` when the delivered image is smaller than it should be.
 
-## Why does it matters ?
+## Why does it matter ?
 
 By delivering too large images (the `warning` case), providers and clients consume more network bandwidth than they should and slow-down page load time. Furthermore, by using a [fluid images approach](http://alistapart.com/article/fluid-images) (ie. `max-width: 100%`), you delegate the downscaling task to the browser which [means more CPU, more memory](http://timkadlec.com/2013/11/why-we-need-responsive-images-part-deux/). This can have an impact the user experience and the situation is of course even worse on mobiles where it often means janks, crashes and less battery life.
 

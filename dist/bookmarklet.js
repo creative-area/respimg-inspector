@@ -1,9 +1,1 @@
-/*
- *	respimg-inspector - v0.2.3
- *	A javascript plugin to check responsive images in the browser.
- *	https://www.npmjs.com/package/respimg-inspector
- *
- *	Made by Florent Bourgeois
- *	Under MIT License
- */
-!function(){var a=document.createElement("link");a.id="respimage-inspector-link",a.href="https://cdn.rawgit.com/creative-area/respimg-inspector/0.2.3/dist/respimg-inspector.css",document.head.appendChild(a);var b=document.createElement("script");b.id="respimage-inspector-script",b.src="https://cdn.rawgit.com/creative-area/respimg-inspector/0.2.3/dist/respimg-inspector.min.js",document.body.appendChild(b)}();
+javascript:(function(){var%20link%20=%20document.createElement(%20%22link%22%20);%0Alink.id%20=%20%22respimage-inspector-link%22;%0Alink.href%20=%20%22https://cdn.rawgit.com/creative-area/respimg-inspector/0.2.4/dist/respimg-inspector.css%22;%0Adocument.head.appendChild(%20link%20);%0A%0Avar%20script%20=%20document.createElement(%20%22script%22%20);%0Ascript.id%20=%20%22respimage-inspector-script%22;%0Ascript.src%20=%20%22https://cdn.rawgit.com/creative-area/respimg-inspector/0.2.4/dist/respimg-inspector.min.js%22;%0Adocument.body.appendChild(%20script%20);%0A})();

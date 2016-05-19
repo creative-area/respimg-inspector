@@ -1,5 +1,5 @@
 /*
- *	respimg-inspector - v0.2.3
+ *	respimg-inspector - v0.2.4
  *	A javascript plugin to check responsive images in the browser.
  *	https://www.npmjs.com/package/respimg-inspector
  *
@@ -281,8 +281,6 @@
 		window.respImgInspector = respImgInspector;
 	}
 
-	window.addEventListener( "load", function() {
-		respImgInspector.init();
-	} );
+	respImgInspector.init();
 
 } )( window, document );

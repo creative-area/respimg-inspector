@@ -39,7 +39,6 @@ Or install via npm: `npm install respimg-inspector`
 
 ```html
 <script src="respimg-inspector.min.js"></script>
-<script>respImgInspector.init();</script>
 ```
 
 By default, all document's nodes are processed except those:

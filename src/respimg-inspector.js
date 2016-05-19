@@ -273,8 +273,6 @@
 		window.respImgInspector = respImgInspector;
 	}
 
-	window.addEventListener( "load", function() {
-		respImgInspector.init();
-	} );
+	respImgInspector.init();
 
 } )( window, document );

@@ -46,8 +46,7 @@ module.exports = function( grunt ) {
 		uglify: {
 			dist: {
 				files: {
-					"dist/respimg-inspector.min.js": [ "dist/respimg-inspector.js" ],
-					"dist/bookmarklet.js": [ "src/bookmarklet.js" ]
+					"dist/respimg-inspector.min.js": [ "dist/respimg-inspector.js" ]
 				}
 			},
 			options: {
@@ -67,9 +66,18 @@ module.exports = function( grunt ) {
 				files: [ {
 					expand: true,
 					flatten: true,
-					src: [ "dist/bookmarklet.js" ],
+					src: [ "src/bookmarklet.js" ],
 					dest: "dist/"
 				} ]
+			}
+		},
+
+		// Bookmarklet wrapper definitions
+		bookmarklet_wrapper: {
+			dist: {
+				files: {
+					"dist/bookmarklet.js": [ "dist/bookmarklet.js" ]
+				}
 			}
 		},
 
@@ -124,12 +132,14 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( "grunt-contrib-uglify" );
 	grunt.loadNpmTasks( "grunt-contrib-watch" );
 	grunt.loadNpmTasks( "grunt-replace" );
+	grunt.loadNpmTasks( "grunt-bookmarklet-wrapper" );
 
 	grunt.registerTask( "build", [
 		"clean:dist",
 		"concat",
 		"uglify",
 		"replace",
+		"bookmarklet_wrapper",
 		"copy:chrome"
 	] );
 

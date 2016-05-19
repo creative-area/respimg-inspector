@@ -2,11 +2,15 @@
   "name": "respimg-inspector",
   "version": "0.2.2",
   "homepage": "https://github.com/creative-area/respimg-inspector",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/creative-area/respimg-inspector.git"
+  },
   "authors": [
     "Florent Bourgeois"
   ],
   "description": "A javascript plugin to check responsive images in the browser.",
-  "main": "src/respimg-inspector.js",
+  "main": "dist/respimg-inspector.min.js",
   "keywords": [
     "image",
     "debug",

@@ -38,21 +38,27 @@ Or install via npm: `npm install respimg-inspector`
 ## Usage
 
 ```html
-<script src="imagesloaded.pkgd.min.js"></script>
 <script src="respimg-inspector.min.js"></script>
 <script>respImgInspector.init();</script>
 ```
 
 By default, all document's nodes are processed except those:
-`span`, `em`, `strong`, `i`, `b`, `big`, `small`, `tt`, `abbr`, `script`, `br`, `hr`, `sub`, `sup`, `button`, `input`, `label`, `select`, `textarea`, `samp`, `var`, `iframe`
+
+`span`, `em`, `strong`, `i`, `b`, `big`, `small`, `tt`, `abbr`,
+`script`, `br`, `hr`, `sub`, `sup`, `button`, `input`, `label`,
+`select`, `textarea`, `samp`, `var`, `iframe`, `script`, `video`,
+`object`, `canvas`, `center`, `font`, `frame`, `frameset`, `noframe`,
+`noscript`, `option`, `strike`, `s`, `wbr`, `bdi`, `kbd`, `audio`,
+`map`, `area`, `track`, `embed`, `param`, `source`, `del`, `ins`,
+`acronym`, `applet`, `blink`, `dir`, `spacer`, `isindex`, `content`,
+`element`, `shadow`, `template`, `noembed`, `head`, `meta`, `link`,
+`title`, `style`, `html`
 
 To restrict the scope, you can filter with custom selectors:
 
 ```html
 <script>
-respImgInspector.init({
-  selectors: "img"
-});
+var respImgInspectorSelectors = "img";
 </script>
 ```
 
@@ -60,11 +66,7 @@ Or
 
 ```html
 <script>
-window.addEventListener( "load", function() {
-  respImgInspector.init( {
-    selectors: ".myclass, img"
-  } );
-} );
+var respImgInspectorSelectors = ".myclass, img";
 </script>
 ```
 

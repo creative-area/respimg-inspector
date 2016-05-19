@@ -7,8 +7,7 @@
 	var supports = !!document.querySelector &&
 		!!window.addEventListener &&
 		!!window.MutationObserver &&
-		!!window.Promise &&
-		!!Array.prototype.map;
+		!!window.Promise;
 
 	var settings, throttling = false, items = [], images = [], overlays = [];
 
@@ -243,10 +242,14 @@
 		overlays = [];
 	};
 
-	respImgInspector.init = function( options ) {
+	respImgInspector.init = function() {
+		var options = {};
 		if ( !supports ) {
 			console.log( "Unsupported browser... Sorry." );
 			return;
+		}
+		if ( window.respImgInspectorSelectors ) {
+			options.selectors = window.respImgInspectorSelectors;
 		}
 		settings = extend( defaults, options || {} );
 		throttle( "resize", "optimizedResize" );
@@ -269,5 +272,9 @@
 	} else {
 		window.respImgInspector = respImgInspector;
 	}
+
+	window.addEventListener( "load", function() {
+		respImgInspector.init();
+	} );
 
 } )( window, document );

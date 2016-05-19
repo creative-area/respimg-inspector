@@ -43,10 +43,8 @@ Or install via npm: `npm install respimg-inspector`
 <script>respImgInspector.init();</script>
 ```
 
-> Note that **RespImg Inspector** has one dependency ([desandro/imagesloaded](https://github.com/desandro/imagesloaded))
-
 By default, all document's nodes are processed except those:
-`span`, `em`, `strong`, `i`, `b`, `big`, `small`, `tt`, `abbr`, `script`, `br`, `hr`, `sub`, `sup`, `button`, `input`, `label`, `select`, `textarea`, `samp`, `var`
+`span`, `em`, `strong`, `i`, `b`, `big`, `small`, `tt`, `abbr`, `script`, `br`, `hr`, `sub`, `sup`, `button`, `input`, `label`, `select`, `textarea`, `samp`, `var`, `iframe`
 
 To restrict the scope, you can filter with custom selectors:
 

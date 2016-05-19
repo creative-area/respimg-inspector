@@ -1,3 +1,12 @@
+sudo: false
 language: node_js
 node_js:
-  - 0.10
+- '6'
+deploy:
+  provider: npm
+  email: florent@creative-area.net
+  api_key:
+    secure: Ow8Bx92THFwrFjKAdJ1rpK07tr01k8ScUiptK1RsO09eNBVoHRqAyHjRrvwJBvXxkeJ26rqfG/Upm2pY0BXwc6u+UdiJmgSQE4Bws+PXU38kMuni7qgd+0ftMRcOQPzycWNaRIqPRuikxK/FY7h2ITRrwpY2fxDpgK/1rxrYQaGZVbkE5vmXbZyQGlxaB9UEOuW1ROPwQSVFDpinA/YCKLwOUvsAeQtxDFnKVIsUk00aJeDE/nWL+68DpGiOn5H6yMOrW1azJ/zWz48bXJnsbp+lFYS3t6mmWg2rfHX/0oNCNcAulNTdQ4p8f5v/xRyRBbRQjM0YBxZYUPPg6pf3oPrHgRYi4rjchiRYdIGoNrxs+BqDTLLIXJjV0a8uBCANWdbS8Lw7vh0cKZCW2agqKZvMEGF8jLz/OmK4rIKnuS9HDcv5vDMlUZU0/FBoKnd3Tg6GFbGkgsTbe4agFuMS13IABOILBwXAAQlnNG4gtVA1hVNVf2sx4hqN60IW+t9LxVtSpKI1BfY+SkBhTV2OgNbrUjRMZTQ0wMKvEc4gXnOIuLadu6wHg08Ez7xq8uXMvr3azrMquyefgyOyojP8wnUlaVvIjqtpoz89P3BLY6y7SCwce1hdaVcQIG+UMCDAZFIdWGRpImAtCGYcwCkAs/wy+xOljshFqsZ8puR2E+M=
+  on:
+    tags: true
+    repo: creative-area/respimg-inspector

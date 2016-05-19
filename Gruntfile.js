@@ -80,8 +80,7 @@ module.exports = function( grunt ) {
 						"src/icons/*.png",
 						"src/chrome/manifest.json",
 						"src/chrome/background.js",
-						"dist/respimg-inspector.js",
-						"bower_components/imagesloaded/imagesloaded.pkgd.js"
+						"dist/respimg-inspector.js"
 					],
 					dest: "dist/chrome/"
 				} ]

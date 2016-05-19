@@ -1,6 +1,6 @@
 {
   "name": "respimg-inspector",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "https://github.com/creative-area/respimg-inspector",
   "authors": [
     "Florent Bourgeois"
@@ -15,7 +15,6 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "imagesloaded": "~3.1.8"
   },
   "ignore": [
     "**/.*",

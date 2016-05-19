@@ -1,5 +1,5 @@
 /*
- *	respimg-inspector - v0.2.1
+ *	respimg-inspector - v0.2.2
  *	A javascript plugin to check responsive images in the browser.
  *	
  *
@@ -14,7 +14,9 @@
 
 	var supports = !!document.querySelector &&
 		!!window.addEventListener &&
-		!!window.MutationObserver;
+		!!window.MutationObserver &&
+		!!window.Promise &&
+		!!Array.prototype.map;
 
 	var settings, throttling = false, items = [], images = [], overlays = [];
 
@@ -92,7 +94,23 @@
 		} );
 	} );
 
+	var imageLoaded = function( image ) {
+		return new Promise( function( resolve, reject ) {
+			if ( image.complete ) {
+				resolve( image );
+			} else {
+				image.onload = function() {
+					resolve( image );
+				};
+				image.onerror = function() {
+					reject();
+				};
+			}
+		} );
+	};
+
 	var update = function() {
+		throttling = true;
 		cleanUp();
 		var selectors = getSelectors();
 		var respImgElements = document.querySelectorAll( selectors );
@@ -112,7 +130,9 @@
 				}
 			}
 		} );
-		window.imagesLoaded( images, function() {
+
+		var promises = images.map( imageLoaded );
+		Promise.all( promises ).then( function() {
 			forEach( items, function( item ) {
 				var data = extend( getElementData( item.el ), getImageData( item.img ) );
 				overlays.push( getOverlay( data ) );
@@ -120,10 +140,11 @@
 					attributes: true
 				} );
 			} );
-			renderOverlays();
-			observer.observe( docBody, {
-				childList: true
-			} );
+				renderOverlays();
+				observer.observe( docBody, {
+					childList: true
+				} );
+				throttling = false;
 		} );
 	};
 
@@ -231,7 +252,10 @@
 	};
 
 	respImgInspector.init = function( options ) {
-		if ( !supports ) { return; }
+		if ( !supports ) {
+			console.log( "Unsupported browser... Sorry." );
+			return;
+		}
 		settings = extend( defaults, options || {} );
 		throttle( "resize", "optimizedResize" );
 		window.addEventListener( "optimizedResize", update, false );

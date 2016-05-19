@@ -34,6 +34,7 @@ module.exports = function( grunt ) {
 		jshint: {
 			files: [
 				"src/respimg-inspector.js",
+				"src/bookmarklet.js",
 				"src/chrome/*.js"
 			],
 			options: {
@@ -44,11 +45,31 @@ module.exports = function( grunt ) {
 		// Minify definitions
 		uglify: {
 			dist: {
-				src: [ "dist/respimg-inspector.js" ],
-				dest: "dist/respimg-inspector.min.js"
+				files: {
+					"dist/respimg-inspector.min.js": [ "dist/respimg-inspector.js" ],
+					"dist/bookmarklet.js": [ "src/bookmarklet.js" ]
+				}
 			},
 			options: {
 				banner: "<%= meta.banner %>"
+			}
+		},
+
+		// Replace definitions
+		replace: {
+			dist: {
+				options: {
+					patterns: [ {
+						match: "version",
+						replacement: "<%= pkg.version %>"
+					} ]
+				},
+				files: [ {
+					expand: true,
+					flatten: true,
+					src: [ "dist/bookmarklet.js" ],
+					dest: "dist/"
+				} ]
 			}
 		},
 
@@ -108,6 +129,7 @@ module.exports = function( grunt ) {
 		"clean:dist",
 		"concat",
 		"uglify",
+		"replace",
 		"copy:chrome"
 	] );
 

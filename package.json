@@ -1,7 +1,8 @@
 {
   "name": "respimg-inspector",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A javascript plugin to check responsive images in the browser.",
+  "homepage": "https://www.npmjs.com/package/respimg-inspector",
   "keywords": [
     "image",
     "debug",

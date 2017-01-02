@@ -62,6 +62,7 @@
 	};
 
 	var throttle = function( type, name, scope ) {
+		console.log( "respImgInspector: Throttle" );
 		var obj = scope || window;
 		var func = function() {
 			if ( throttling ) { return; }
@@ -101,6 +102,7 @@
 	};
 
 	var update = function() {
+		console.log( "respImgInspector: Update" );
 		throttling = true;
 		cleanUp();
 		var selectors = getSelectors();
@@ -140,6 +142,7 @@
 	};
 
 	var getSelectors = function() {
+		console.log( "respImgInspector: Get Selectors" );
 		if ( settings.selectors ) {
 			return settings.selectors;
 		} else {
@@ -243,9 +246,10 @@
 	};
 
 	respImgInspector.init = function() {
+		console.log( "respImgInspector: Initialization" );
 		var options = {};
 		if ( !supports ) {
-			console.log( "Unsupported browser... Sorry." );
+			console.log( "respImgInspector: Unsupported browser... Sorry." );
 			return;
 		}
 		if ( window.respImgInspectorSelectors ) {

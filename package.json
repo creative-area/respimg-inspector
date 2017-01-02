@@ -1,6 +1,6 @@
 {
   "name": "respimg-inspector",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "A javascript plugin to check responsive images in the browser.",
   "homepage": "https://www.npmjs.com/package/respimg-inspector",
   "keywords": [
@@ -30,7 +30,6 @@
   "dependencies": {},
   "devDependencies": {
     "grunt": "^1.0.1",
-    "grunt-bookmarklet-wrapper": "^1.2.0",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-concat": "^1.0.1",

@@ -13,16 +13,20 @@
     "64": "icon64.png",
     "128": "icon128.png"
   },
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
   "browser_action": {
     "default_title": "RespImg Inspector",
     "default_icon": "icon32.png"
   },
   "permissions": [
     "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["respimg-inspector.css"],
+      "js": ["respimg-inspector.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
   ]
-
 }

@@ -1,5 +1,5 @@
 /*
- *	respimg-inspector - v0.2.4
+ *	respimg-inspector - v0.2.5
  *	A javascript plugin to check responsive images in the browser.
  *	https://www.npmjs.com/package/respimg-inspector
  *
@@ -17,7 +17,8 @@
     !!window.MutationObserver &&
     !!window.Promise;
 
-  var settings, throttling = false,
+  var settings,
+    throttling = false,
     items = [],
     images = [],
     overlays = [];
@@ -80,7 +81,6 @@
         return;
       }
       throttling = true;
-      observer.disconnect();
       requestAnimationFrame(function() {
         obj.dispatchEvent(new CustomEvent(name));
         throttling = false;
@@ -92,12 +92,6 @@
   var getCss = function(element, property) {
     return window.getComputedStyle(element, null).getPropertyValue(property);
   };
-
-  var observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function() {
-      update();
-    });
-  });
 
   var imageLoaded = function(image) {
     return new Promise(function(resolve, reject) {
@@ -142,14 +136,8 @@
       forEach(items, function(item) {
         var data = extend(getElementData(item.el), getImageData(item.img));
         overlays.push(getOverlay(data));
-        observer.observe(item.el, {
-          attributes: true
-        });
       });
       renderOverlays();
-      observer.observe(docBody, {
-        childList: true
-      });
       throttling = false;
     });
   };
@@ -247,7 +235,6 @@
   };
 
   var cleanUp = function() {
-    observer.disconnect();
     if (overlays.length) {
       forEach(overlays, function(overlay) {
         overlay.remove();

@@ -60,16 +60,12 @@ module.exports = function(grunt) {
             match: "version",
             replacement: "<%= pkg.version %>"
           }]
-        }
-      }
-    },
-
-    // Clean definitions
-    clean: {
-      dist: {
+        },
         files: [{
-          dot: true,
-          src: ["dist/*"]
+          expand: true,
+          flatten: true,
+          src: ['src/manifest.json'],
+          dest: 'dist/'
         }]
       }
     },
@@ -83,12 +79,20 @@ module.exports = function(grunt) {
           flatten: true,
           src: [
             "src/respimg-inspector.css",
-            "src/respimg-inspector.css",
             "src/icons/*.png",
-            "src/manifest.json",
             "dist/respimg-inspector.js"
           ],
           dest: "dist/"
+        }]
+      }
+    },
+
+    // Clean definitions
+    clean: {
+      dist: {
+        files: [{
+          dot: true,
+          src: ["dist/*"]
         }]
       }
     },

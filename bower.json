@@ -25,7 +25,6 @@
     "bower_components",
     "node_modules",
     "Gruntfile.js",
-    "package.json",
-    "dist/chrome/"
+    "package.json"
   ]
 }
